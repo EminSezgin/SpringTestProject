@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Konum Yönetimi</title>
+</head>
+<body>
+<div align="center">
+    <h1>Konum Listesi</h1>
+    <a href="/locations/add">Yeni Konum Ekle</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Şehir</th>
+            <th>İlçe</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="location : ${listLocations}">
+            <td th:text="${location.sehir}">Sehir</td>
+            <td th:text="${location.ilce}">İlce</td>
+            <td>
+                <a th:href="@{'/locations/edit/' + ${location.id}}">Düzenle</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/locations/delete/' + ${location.id}}">Sil</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
