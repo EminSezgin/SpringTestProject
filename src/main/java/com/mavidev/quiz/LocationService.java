@@ -20,6 +20,7 @@ public class LocationService {
     public boolean save(Location location){
         Location exists = repo.findBySehirAndIlce(location.getSehir(), location.getIlce());
         if (exists == null){
+            location.setBolge(location.getBolge().toUpperCase());
             repo.save(location);
             return true;
         }
