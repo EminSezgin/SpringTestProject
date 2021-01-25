@@ -33,15 +33,21 @@ public class AppController {
     public String showNewLocationPage(Model model) {
         Location location = new Location();
         model.addAttribute("location", location);
+        model.addAttribute("isUnique", true);
 
         return "addLocation";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveProduct(@ModelAttribute("location") Location location) {
-        service.save(location);
+    public String saveProduct(@ModelAttribute("location") Location location, Model model) {
+        boolean success = service.save(location);
+        if(success){
+            return "redirect:/locations";
+        }else{
+            model.addAttribute("isUnique", false);
+            return "addLocation";
+        }
 
-        return "redirect:/locations";
     }
 
     @RequestMapping("/locations/edit/{id}")

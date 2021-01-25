@@ -10,6 +10,7 @@ public class Location {
     private Long id;
     private String sehir;
     private String ilce;
+    private String bolge;
 
     protected Location(){
     }
@@ -38,5 +39,13 @@ public class Location {
 
     public void setSehir(String sehir) {
         this.sehir = sehir;
+    }
+
+    public String getBolge() {
+        return bolge;
+    }
+
+    public void setBolge(String bolge) {
+        this.bolge = bolge;
     }
 }

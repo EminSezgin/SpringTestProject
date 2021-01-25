@@ -17,8 +17,15 @@ public class LocationService {
         return repo.findAll();
     }
 
-    public void save(Location location){
-        repo.save(location);
+    public boolean save(Location location){
+        Location exists = repo.findBySehirAndIlce(location.getSehir(), location.getIlce());
+        if (exists == null){
+            repo.save(location);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public Location get(long id) {
